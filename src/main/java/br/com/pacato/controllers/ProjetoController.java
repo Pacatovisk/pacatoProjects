@@ -143,7 +143,7 @@ public class ProjetoController{
         return mv;
     }
 
-   //MÉTODO GET PARA PESQUISAR PROJETO POR ID
+   //MÉTODO POST PARA PESQUISAR PROJETO POR ID
     @PostMapping("pesquisarProjetoPorId")
     public ModelAndView pesquisarId(@RequestParam(value = "id", required = false) Long id) {
         ModelAndView mv = new ModelAndView("home/index");
