@@ -1,0 +1,37 @@
+.footer {
+    margin-top: 107px;
+    color: #fff;
+    text-align: center;
+    font-size: 1.25em;
+    padding: 15px;
+}
+
+.titulo-painel {
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+.link-detalhes-projeto {
+    color: green;
+    text-decoration: none;
+}
+
+.painel {
+    padding: 20px;
+}
+
+.descricaoSituacaoDesejada {
+    height: 200px;
+}
+
+.botao-cancelar {
+    margin-top: 10px;
+}
+
+.caixa-texto {
+    height: 200px;
+}

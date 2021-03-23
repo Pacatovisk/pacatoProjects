@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bootstrap5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <title>Pacato -  Filtro Projetos</title>
+</head>
+<body>
+<!-- MENU -->
+<header th:replace="fragmentos/fragmentos :: cabecalho"></header>
+<main>
+    <section>
+        <div class="container">
+            <div class="panel panel-primary shadow bg-white rounded painel">
+                <div class="panel-heading">
+                    <h3 class="panel-title text-light bg-dark text-center titulo-painel">Filtrar Projeto</h3>
+                </div>
+                <div class="panel-body">
+                    <div  class="col-md-6 offset-md-3">
+                        <form class="d-flex" method="post" action="pesquisarProjetoPorId">
+                            <input style="width: 294px" name="id" class="form-control me-2" type="number"  value="2"  placeholder="Busque pelo ID do projeto" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit" value="Buscar">Pesquisar</button>
+                        </form>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Projetos com Regulatório SIM</h5>
+                                    <p class="card-text">Busque por todos projetos com regulatório NAO no sistema.</p>
+                                    <a th:href="@{/projetosRegulatorioSim}"  class="btn btn-outline-secondary">Buscar</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Projetos com Regulatório NAO</h5>
+                                    <p class="card-text">Busque por todos projetos com regulatório NAO no sistema.</p>
+                                    <a th:href="@{/projetosRegulatorioNao}"  class="btn btn-outline-secondary">Buscar</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end botao-cancelar">
+                                <a href="/"><button type="button" class="btn btn-outline-secondary">Voltar</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>
+
+

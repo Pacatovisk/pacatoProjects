@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bootstrap5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <title>Pacato - Detalhes</title>
+</head>
+<body>
+
+<!-- MENU -->
+<header th:replace="fragmentos/fragmentos :: cabecalho"></header>
+
+<main>
+    <!-- SEÇÃO DE PROJETOS -->
+    <section>
+        <div class="container" th:each="projeto : ${projetos}">
+            <div class="panel panel-primary shadow bg-white rounded painel">
+                <div class="panel-heading">
+                    <h3 class="panel-title text-light bg-dark text-center titulo-painel">Detalhes do Projeto</h3>
+                </div>
+                <div class="panel-body">
+                    <form class="row needs-validation"  th:object="${projetos}">
+                        <div class="col-md-4">
+                            <label for="nomeProjeto" class="form-label">Projeto</label>
+                            <input disabled type="text" class="form-control" id="nomeProjeto" th:field="*{nomeProjeto}">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="departamento" class="form-label">Departamento</label>
+                            <input disabled type="text" class="form-control" id="departamento" th:field="*{departamento}">
+                        </div>
+                        <div class="col-2">
+                            <label for="dataSolicitacao" class="form-label">Data De Solicitação</label>
+                            <input disabled type="text" class="form-control" id="dataSolicitacao" placeholder="12/20/2020" th:field="*{dataSolicitacao}">
+                        </div>
+                        <div class="col-md-2">
+                            <label for="regulatorio" class="form-label">Regulatório</label>
+                            <select disabled id="regulatorio" class="form-select" th:field="*{regulatorio}">
+                                <option th:each="regulatorio : ${T(br.com.pacato.enums.Regulatorio).values()}" th:value="${regulatorio}" th:text="${regulatorio}"></option>
+                            </select>
+                            <div class="invalid-feedback">Example invalid select feedback</div>
+                        </div>
+                        <div class="col-md-4">
+                            <label  for="analiseSituacaoAtual" class="form-label">Análise Da Situação Atual</label>
+                            <textarea disabled type="text" class="form-control" id="analiseSituacaoAtual" style="height: 200px" th:field="*{analiseSituacaoAtual}"></textarea>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="descricaoSituacaoDesejada" class="form-label">Descrição Da Situação Desejada</label>
+                            <textarea disabled type="text" class="form-control caixa-texto" id="descricaoSituacaoDesejada" th:field="*{descricaoSituacaoDesejada}"></textarea>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="descricaoSolucao" class="form-label">Descrição Da Solução</label>
+                            <textarea disabled type="text" class="form-control caixa-texto" id="descricaoSolucao" th:field="*{descricaoSolucao}"></textarea>
+                        </div>
+                        <div class="text-center botao-cancelar">
+                            <a href="/"><button type="button" class="btn btn-outline-secondary">Voltar</button></a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bootstrap5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <title>Pacato - Relatório NAO</title>
+</head>
+<body>
+<!-- CABEÇALHO -->
+<header th:replace="fragmentos/fragmentos :: cabecalho"></header>
+<!-- SEÇÃO DE PROJETOS -->
+<main>
+    <section>
+        <div class="container">
+            <div class="container">
+                <div class="panel panel-primary shadow bg-white rounded painel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title text-light bg-dark text-center titulo-painel">Projetos Cadastrados</h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <th:block th:include="fragmentos/mensagemValidacao"></th:block>
+                        <table class="table table-bordered table-hover table-responsive">
+                            <thead>
+                            <th class="text-center" scope="col">Id</th>
+                            <th class="text-center" scope="col">Projeto</th>
+                            <th class="text-center" scope="col">Departamento</th>
+                            <th class="text-center" scope="col">Data Solicitação</th>
+                            <th class="text-center" scope="col">Regulatório</th>
+                            <th class="text-center" scope="col">Ação</th>
+                            </thead>
+                            <tbody>
+                            <tr scope="row" th:each="projeto : ${projetosRegulatorioNao}">
+                                <td class="text-center" th:text="${projeto.id}"></td>
+                                <td class="text-center"><a class="link-detalhes-projeto"  th:href="${(#mvc.url('PC#detalhesProjeto').arg(0, projeto.id)).build()}"><span th:text="${projeto.nomeProjeto}"></span></a></td>
+                                <td class="text-center" th:text="${projeto.departamento}"></td>
+                                <td class="text-center" th:text="${#temporals.format(projeto.dataSolicitacao, 'dd/MM/yyyy')}"></td>
+                                <td class="text-center" th:text="${projeto.regulatorio}"></td>
+                                <td class="text-center">
+                                    <a class="btn btn-outline-success" th:href="@{atualizarProjeto/{id}(id=${projeto.id})}">
+                                        <i class="bi bi-hammer"></i>
+                                    </a>
+                                    <a class="btn btn-outline-danger" th:href="@{deletar/{id}(id=${projeto.id})}">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<script src="/bootstrap5/js/bootstrap.min.js"></script>
+<script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+</body>
+</html>

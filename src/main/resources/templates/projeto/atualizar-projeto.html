@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bootstrap5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <title>Pacato - Editar Projeto</title>
+</head>
+<body>
+<!-- CABEÇALHO -->
+<header th:replace="fragmentos/fragmentos :: cabecalho"></header>
+<main>
+    <div class="container">
+        <div class="panel panel-primary shadow bg-white rounded painel">
+            <div class="panel-heading">
+                <h3 class="panel-title text-light bg-dark text-center titulo-painel">Editar Projeto</h3>
+            </div>
+            <div class="panel-body">
+                <th:block th:include="fragmentos/mensagemValidacao"></th:block>
+                <form class="row needs-validation" method="post" action="/atualizar" th:object="${projeto}" autocomplete="off">
+                    <input type="hidden" th:field="*{id}">
+                    <div class="col-md-4">
+                        <label for="nomeProjeto" class="form-label">Projeto</label>
+                        <input type="text" class="form-control" id="nomeProjeto" th:field="*{nomeProjeto}"  th:errorClass="is-invalid">
+                        <div class="invalid-feedback" th:errors="*{nomeProjeto}">
+                            Erros do nome do projeto
+                        </div>
+
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="departamento" class="form-label">Departamento</label>
+                        <input type="text" class="form-control" id="departamento" th:field="*{departamento}" th:errorClass="is-invalid">
+                        <div class="invalid-feedback" th:errors="*{departamento}">
+                            Erro no nome do departamento
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <label for="dataSolicitacao" class="form-label">Data De Solicitação</label>
+                        <input  type="text" class="form-control" id="dataSolicitacao" placeholder="12/20/2020" th:field="*{dataSolicitacao}" th:errorClass="is-invalid">
+                        <div class="invalid-feedback" th:errors="*{dataSolicitacao}">
+                            Erro no formato da data
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="regulatorio" class="form-label">Regulatório</label>
+                        <select id="regulatorio" class="form-select" th:field="*{regulatorio}">
+                            <option th:each="regulatorio : ${T(br.com.pacato.enums.Regulatorio).values()}" th:value="${regulatorio}" th:text="${regulatorio}"></option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="analiseSituacaoAtual" class="form-label">Análise Da Situação Atual</label>
+                        <textarea type="text" class="form-control" id="analiseSituacaoAtual" style="height: 200px" th:field="*{analiseSituacaoAtual}" th:errorClass="is-invalid"></textarea>
+                        <div class="invalid-feedback" th:errors="*{analiseSituacaoAtual}">
+                            Erro no nome da analiseSituacaoAtual
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="descricaoSituacaoDesejada" class="form-label">Descrição Da Situação Desejada</label>
+                        <textarea type="text" class="form-control" id="descricaoSituacaoDesejada" style="height: 200px" th:field="*{descricaoSituacaoDesejada}" th:errorClass="is-invalid"></textarea>
+                        <div class="invalid-feedback" th:errors="*{descricaoSituacaoDesejada}">
+                            Erro no nome da descricaoSituacaoDesejada
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="descricaoSolucao" class="form-label">Descrição Da Solução</label>
+                        <textarea type="text" class="form-control" id="descricaoSolucao" style="height: 200px" th:field="*{descricaoSolucao}" th:errorClass="is-invalid"></textarea>
+                        <div class="invalid-feedback" th:errors="*{descricaoSituacaoDesejada}">
+                            Erro no nome da descricao
+                        </div>
+                    </div>
+                    <div class="text-center botao-cancelar">
+                        <button type="submit" class="btn btn-outline-secondary">Salvar Projeto</button>
+                        <a href="/"><button type="button" class="btn btn-outline-secondary">Cancelar</button></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+<!--<footer th:replace="fragmentos/fragmentos :: footer"></footer>-->
+<script src="/bootstrap5/js/bootstrap.min.js"></script>
+<script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+</body>
+</html>
+
