@@ -43,8 +43,8 @@ public class ProjetoController{
     @GetMapping("/cadastrarProjeto")
     public ModelAndView cadastrarProjeto(Projeto projeto) {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("projeto/formProjeto");
-        //mv.addObject("projeto", new Projeto());
+        mv.setViewName("projeto/form-projeto");
+        mv.addObject("projeto", new Projeto());
         return mv;
     }
 
@@ -152,10 +152,17 @@ public class ProjetoController{
         if (byId.isPresent()) {
             Projeto projeto = byId.get();
             mv.addObject("projetos", projeto);
+        }else {
+            mv.addObject("projetos", projetoRepository.findByDataSolicitacao());
         }
-        mv.addObject("projetos", projetoRepository.findByDataSolicitacao());
         return mv;
     }
 
+    @ExceptionHandler(java.lang.IllegalArgumentException.class)
+    public String onError() {
+        return "redirect:/";
+    }
 }
+
+
 
