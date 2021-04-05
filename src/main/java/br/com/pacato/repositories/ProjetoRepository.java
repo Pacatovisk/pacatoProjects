@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 @Transactional
@@ -29,6 +28,5 @@ public interface ProjetoRepository extends JpaRepository<Projeto, Long> {
     //consulta para pesquisar um projeto pelo nome
     //@Query("select p from Projeto p where p.nomeProjeto like %?1%")
     public List<Projeto> findByNomeProjetoContainingIgnoreCase(String nomeProjeto);
-
 
 }
